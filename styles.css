@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+/* Body */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+
+/* Header */
+header {
+  background-color: #1a1a1a;
+  color: #cccccc;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+/* Footer */
+footer {
+  background-color: #1a1a1a;
+  color: #cccccc;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+
+/* Nav */
+nav {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 1rem 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  nav li {
+    display: inline;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    transition: text-decoration 0.3s ease;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+
+/* Headings */
+h1, h2 {
+  font-weight: 700;
+  color: f1f1f1;
+}
+
+/* Padding de section */
+section {
+  padding: 2rem;
+}
+
+
+/* Form */
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#contact button {
+  background-color: #1b4332;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#contact button:hover {
+  background-color: #2d6a4f;
+}
+
+
+/* Contenedor de artículos o Research */
+.research-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+
+/* Card individual de cada artículo */
+.research-article {
+  width: 300px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  background-color: #1e1e1e;
+  text-align: left;
+}
+
+
+/* Imágenes de artículos */
+.research-article img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* Título y abstract de los artículos */
+.research-article h3 {
+  font-size: 1.2rem;
+  margin: 0.75rem 1rem 0.5rem;
+}
+
+.research-article p {
+  font-size: 0.75rem;
+  margin: 0 1rem 1rem;
+  color: #bbbbbb;
+}
+
+
+/* Contenedor Grid */
+.experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Cada tarjeta del grid o digital experiments */
+.exp-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Imágenes de las tarjetas */
+.exp-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Título en imagen */
+.exp-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+
+/* Fondo blanco para imagen de network, que se ve mal de otro modo */
+.exp-card img[src*="network.png"] {
+  background-color: #f9f9f9;
+  padding: 4px;
+  border-radius: 0.5rem;
+}
