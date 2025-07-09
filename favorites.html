@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Favorites</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Saved Books</h1>
+    <p>These are the books you marked as interesting.</p>
+  </header>
+
+  <main>
+    <section>
+      <div id="favorites-container" class="product-grid"></div>
+
+      <div style="margin-top: 2rem;">
+        <button onclick="clearFavorites()">Clear favorites</button>
+        <button onclick="finish()">Finish</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    async function loadFavorites() {
+      const container = document.getElementById('favorites-container');
+      const saved = JSON.parse(localStorage.getItem('favorites')) || [];
+
+      if (saved.length === 0) {
+        container.innerHTML = "<p>No favorites saved.</p>";
+        return;
+      }
+
+      const res = await fetch('https://dummyjson.com/products?limit=100');
+      const data = await res.json();
+
+      const favoritos = data.products.filter(p => saved.includes(p.id));
+
+      favoritos.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.thumbnail}" alt="${product.title}" />
+          <h3>${product.title}</h3>
+          <p>${product.description.substring(0, 100)}...</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function clearFavorites() {
+      localStorage.removeItem('favorites');
+      alert("Favorites cleared");
+      location.reload();
+    }
+
+    function finish() {
+      localStorage.removeItem('favorites');
+      alert("Thanks!");
+      window.location.href = "index.html";
+    }
+
+    loadFavorites();
+  </script>
+
+</body>
+</html>

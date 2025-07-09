@@ -116,6 +116,15 @@
 
         </section>
 
+        <section id="favorites">
+             <h2>Books I recommend</h2>
+              <p>A small selection of books and resources I find interesting.</p>
+              <div id="product-cards" class="product-grid"></div>
+
+            <div style="margin-top: 1rem;">
+                <a href="favorites.html"><button>View saved books</button></a>
+             </div>
+        </section>
 
         <section id="contact">
             <h2>Contact</h2>
@@ -159,6 +168,42 @@
             <a href="https://www.linkedin.com/in/fabi%C3%A1n-roberto-vega-148a50190/">LinkedIn</a>
         </p>
     </footer>
+
+    <script>
+    async function loadProducts() {
+        const res = await fetch('https://dummyjson.com/products?limit=4');
+        const data = await res.json();
+        const container = document.getElementById('product-cards');
+
+        data.products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+
+        card.innerHTML = `
+            <img src="${product.thumbnail}" alt="${product.title}" />
+            <h3>${product.title}</h3>
+            <p>${product.description.substring(0, 100)}...</p>
+            <button onclick="saveToFavorites(${product.id})">Save to favorites</button>
+        `;
+
+        container.appendChild(card);
+        });
+    }
+
+    function saveToFavorites(id) {
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        if (!favorites.includes(id)) {
+        favorites.push(id);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        alert("Saved!");
+        } else {
+        alert("Already in favorites");
+        }
+    }
+
+    loadProducts();
+    </script>
 
 </body>
 </html>
